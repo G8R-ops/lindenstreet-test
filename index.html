@@ -6,7 +6,7 @@
   <title>Linden Street LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="assets/name-logo.png">
+  <link rel="icon" href="assets/Name-logo.png">
   <meta name="description" content="Linden Street LLC - Advocacy, Creative, Video Production, Grassroots Lobbying, Consulting, Digital Outreach.">
   <meta property="og:title" content="Linden Street LLC">
   <meta property="og:description" content="Trusted partner in advocacy and strategy">
@@ -133,26 +133,46 @@
   <!-- Contact -->
   <section id="contact" class="container mx-auto py-16 px-4 text-center">
     <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-    <form action="https://formspree.io/f/{your_form_id}" method="POST" class="max-w-lg mx-auto bg-white shadow p-6 rounded">
-      <input type="text" name="name" placeholder="Your Name" class="w-full border p-2 mb-4 rounded" required>
-      <input type="email" name="email" placeholder="Your Email" class="w-full border p-2 mb-4 rounded" required>
-      <textarea name="message" placeholder="Your Message" class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
+
+    <!-- Hidden iframe to prevent redirect -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <form 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSeY0xZw-JpdOGkBctQfC5vFPZHe6qxVD-8av5gD8fa3HfIKIA/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="formSubmitted()" 
+      class="max-w-lg mx-auto bg-white shadow p-6 rounded">
+
+      <input type="text" name="entry.295846301" placeholder="Your Name" 
+             class="w-full border p-2 mb-4 rounded" required>
+      <input type="email" name="entry.1167689731" placeholder="Your Email" 
+             class="w-full border p-2 mb-4 rounded" required>
+      <textarea name="entry.1033462780" placeholder="Your Message" 
+                class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
+
       <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-700">Send</button>
     </form>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden mt-4 text-green-600 font-semibold">
+      ✅ Thank you! Your message has been sent.
+    </div>
   </section>
 
-<footer class="bg-gray-100 text-gray-800 text-center py-6">
-  <img src="assets/Name-logo.png" alt="Footer logo" class="mx-auto h-10 mb-4">
-  <p>&copy; 2025 Linden Street LLC. All Rights Reserved.</p>
-  <div class="mt-4 space-x-4">
-    <a href="mailto:contact@lindenstreetllc.com" class="text-blue-600 hover:text-blue-800">contact@lindenstreetllc.com</a>
-    <span>|</span>
-    <a href="https://www.google.com" target="_blank" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>
-  </div>
-</footer>
-
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-gray-800 text-center py-6">
+    <img src="assets/Name-logo.png" alt="Footer logo" class="mx-auto h-10 mb-4">
+    <p>&copy; 2025 Linden Street LLC. All Rights Reserved.</p>
+    <div class="mt-4 space-x-4">
+      <a href="mailto:contact@lindenstreetllc.com" class="text-blue-600 hover:text-blue-800">contact@lindenstreetllc.com</a>
+      <span>|</span>
+      <a href="https://www.google.com" target="_blank" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>
+    </div>
+  </footer>
 
   <script>
+    // Counter Script
     function initCounter() {
       const counterElement = document.getElementById('counter-value');
       if (!counterElement) return;
@@ -199,6 +219,13 @@
 
       observer.observe(counterSection);
     });
+
+    // Contact Form success
+    function formSubmitted() {
+      setTimeout(() => {
+        document.getElementById('success-message').classList.remove('hidden');
+      }, 500);
+    }
   </script>
 </body>
 </html>
