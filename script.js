@@ -1,17 +1,14 @@
 function initCounter() {
   const counterElement = document.getElementById('counter-value');
-  if (!counterElement) return; // Exit if element not found
+  if (!counterElement) return;
 
   const startNumber = 0;
-
   const startDate = new Date('2025-01-01');
   const today = new Date();
   const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-
   const baseNumber = 1000000;
   const dailyIncrement = 10;
   const endNumber = baseNumber + (daysPassed * dailyIncrement);
-
   const duration = 2000;
   let startTime = null;
 
@@ -33,8 +30,6 @@ function initCounter() {
   window.requestAnimationFrame(animateCounter);
 }
 
-// Run after DOM is fully ready
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(initCounter, 100); // slight delay to ensure element loads
+  setTimeout(initCounter, 100);
 });
-
