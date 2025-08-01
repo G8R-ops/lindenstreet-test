@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (cards.length > 0) {
-    highlightCard(); // initial highlight
-    setInterval(highlightCard, 3000); // every 3 seconds
+    highlightCard(); // initial
+    setInterval(highlightCard, 3000); // every 3s
   }
 });
