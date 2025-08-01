@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linden Street LLC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="https://www.lindenstreetllc.com/favicon.ico">
+  <meta name="description" content="Linden Street LLC - Advocacy, Creative, Video Production, Grassroots Lobbying, Consulting, Digital Outreach.">
+  <meta property="og:title" content="Linden Street LLC">
+  <meta property="og:description" content="Trusted partner in advocacy and strategy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lindenstreetllc.com/">
+</head>
+<body class="font-sans">
+
+  <header class="fixed top-0 left-0 right-0 bg-white shadow z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <img src="https://www.lindenstreetllc.com/logo.png" alt="Linden Street LLC" class="h-10">
+      <nav>
+        <ul class="flex gap-6">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://www.lindenstreetllc.com/hero.jpg');">
+    <div class="text-center bg-black bg-opacity-50 p-8 rounded">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Linden Street LLC</h1>
+      <p class="text-lg md:text-2xl">Your trusted partner in advocacy and strategy</p>
+    </div>
+  </section>
+
+  <section id="about" class="container mx-auto py-16 px-4">
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <img src="https://www.lindenstreetllc.com/about1.jpg" alt="About us" class="rounded shadow">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Who We Are</h2>
+        <p class="text-gray-700 leading-relaxed">We are a team dedicated to providing expert advocacy, strategic planning, and community engagement solutions tailored to your goals.</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+        <p class="text-gray-700 leading-relaxed">Our mission is to empower organizations and individuals to achieve meaningful change through effective grassroots lobbying and outreach strategies.</p>
+      </div>
+      <img src="https://www.lindenstreetllc.com/about2.jpg" alt="Mission" class="rounded shadow">
+    </div>
+  </section>
+
+  <section class="bg-blue-900 text-white text-center py-16">
+    <h2 class="text-3xl font-bold mb-4">How We've Made</h2>
+    <div id="counter-value" class="text-6xl font-extrabold">0</div>
+    <p class="mt-4 text-xl">Grassroots Connections</p>
+  </section>
+
+  <section id="services" class="container mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/11336/11336302.png" class="mx-auto h-16 mb-4" alt="Advocacy">
+        <h3 class="font-semibold text-lg">Advocacy</h3>
+      </div>
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/2857/2857433.png" class="mx-auto h-16 mb-4" alt="Creative">
+        <h3 class="font-semibold text-lg">Creative</h3>
+      </div>
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/3938/3938627.png" class="mx-auto h-16 mb-4" alt="Video Production">
+        <h3 class="font-semibold text-lg">Video Production</h3>
+      </div>
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/16019/16019965.png" class="mx-auto h-16 mb-4" alt="Grassroots Lobbying">
+        <h3 class="font-semibold text-lg">Grassroots Lobbying</h3>
+      </div>
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/11501/11501845.png" class="mx-auto h-16 mb-4" alt="Consulting">
+        <h3 class="font-semibold text-lg">Consulting</h3>
+      </div>
+      <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/10435/10435216.png" class="mx-auto h-16 mb-4" alt="Digital Outreach">
+        <h3 class="font-semibold text-lg">Digital Outreach</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container mx-auto py-16 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+    <form action="https://formspree.io/f/{your_form_id}" method="POST" class="max-w-lg mx-auto bg-white shadow p-6 rounded">
+      <input type="text" name="name" placeholder="Your Name" class="w-full border p-2 mb-4 rounded" required>
+      <input type="email" name="email" placeholder="Your Email" class="w-full border p-2 mb-4 rounded" required>
+      <textarea name="message" placeholder="Your Message" class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
+      <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-700">Send</button>
+    </form>
+  </section>
+
+  <footer class="bg-gray-800 text-white text-center py-6">
+    <img src="https://www.lindenstreetllc.com/footer-logo.png" alt="Footer logo" class="mx-auto h-10 mb-2">
+    <p>&copy; 2025 Linden Street LLC. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
