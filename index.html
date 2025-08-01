@@ -6,7 +6,7 @@
   <title>Linden Street LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="https://www.lindenstreetllc.com/favicon.ico">
+  <link rel="icon" href="assets/name-logo.png">
   <meta name="description" content="Linden Street LLC - Advocacy, Creative, Video Production, Grassroots Lobbying, Consulting, Digital Outreach.">
   <meta property="og:title" content="Linden Street LLC">
   <meta property="og:description" content="Trusted partner in advocacy and strategy">
@@ -18,188 +18,86 @@
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 bg-white shadow z-50">
     <div class="container mx-auto flex justify-center items-center p-4">
-      <img src="https://www.lindenstreetllc.com/logo.png" alt="Linden Street LLC" class="h-12">
+      <img src="assets/name-logo.png" alt="Linden Street LLC" class="h-12">
     </div>
   </header>
 
-<style>
-  /* Gradient Animation */
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  .animated-gradient {
-    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0d9488, #0f172a);
-    background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
-  }
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0d9488, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-heading { animation: fadeUp 1.2s ease forwards; }
+    .hero-subheading { animation: fadeUp 1.5s ease forwards; }
+  </style>
 
-  /* Text Fade/Slide Animation */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-heading {
-    animation: fadeUp 1.2s ease forwards;
-  }
-  .hero-subheading {
-    animation: fadeUp 1.5s ease forwards;
-  }
-</style>
-
-<!-- Hero -->
-<section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
-  <div class="absolute inset-0 animated-gradient"></div>
-  <div class="absolute inset-0 bg-black opacity-30"></div>
-  <div class="relative text-center px-6">
-    <h1 class="hero-heading text-4xl md:text-6xl font-extrabold leading-tight mb-4">Building Brands</h1>
-    <h2 class="hero-subheading text-3xl md:text-5xl font-extrabold text-yellow-300">Activating Grassroots</h2>
-  </div>
-</section>
-
-<!-- Counter (Transition Box) -->
-<section class="relative py-20 bg-white text-center">
-  <div class="max-w-xl mx-auto relative z-10 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-700 text-white rounded-2xl shadow-lg p-10">
-    <h2 class="text-3xl font-bold mb-4">How We've Made</h2>
-    <div id="counter-value" class="text-6xl font-extrabold">0</div>
-    <p class="mt-4 text-xl">Grassroots Connections</p>
-  </div>
-
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </div>
-</section>
-
-<script>
-  function initCounter() {
-    const counterElement = document.getElementById('counter-value');
-    if (!counterElement) return;
-
-    const startNumber = 0;
-    const startDate = new Date('2025-01-01');
-    const today = new Date();
-    const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    const baseNumber = 1000000;
-    const dailyIncrement = 10;
-    const endNumber = baseNumber + (daysPassed * dailyIncrement);
-    const duration = 2000;
-    let startTime = null;
-
-    const animateCounter = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const increment = (endNumber - startNumber) * (progress / duration);
-      let currentNumber = Math.min(startNumber + increment, endNumber);
-
-      counterElement.textContent = Math.floor(currentNumber).toLocaleString('en-US');
-
-      if (progress < duration) {
-        window.requestAnimationFrame(animateCounter);
-      } else {
-        counterElement.textContent = endNumber.toLocaleString('en-US');
-      }
-    };
-
-    window.requestAnimationFrame(animateCounter);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const counterSection = document.querySelector('#counter-value');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          initCounter();
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(counterSection);
-  });
-</script>
-
-<!-- Engagement / Next Section -->
-<section class="container mx-auto py-16 px-4">
-  <!-- Block 1 -->
-  <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
-    <img src="your-image-1.jpg" alt="Engagement" class="rounded shadow">
-    <div>
-      <h2 class="text-3xl font-bold mb-4 text-blue-700">Engagement that works</h2>
-      <p class="text-gray-700 leading-relaxed">
-        We specialize in engaging advocates across the country and at every level of government. Whether your focus is energy policy, local elections, healthcare initiatives, or national campaigns, our experienced team provides comprehensive support.
-      </p>
+  <!-- Hero -->
+  <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+    <div class="absolute inset-0 animated-gradient"></div>
+    <div class="absolute inset-0 bg-black opacity-30"></div>
+    <div class="relative text-center px-6">
+      <h1 class="hero-heading text-4xl md:text-6xl font-extrabold leading-tight mb-4">Building Brands</h1>
+      <h2 class="hero-subheading text-3xl md:text-5xl font-extrabold text-yellow-300">Activating Grassroots</h2>
     </div>
-  </div>
+  </section>
 
-  <!-- Block 2 -->
-  <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
-    <div>
-      <h2 class="text-3xl font-bold mb-4 text-blue-700">Stories that stand out</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Your unique story deserves to be heard. We create impactful brands and messaging designed to draw people to you and ensure your message resonates powerfully.
-      </p>
+  <!-- Counter -->
+  <section class="relative py-20 bg-white text-center">
+    <div class="max-w-xl mx-auto relative z-10 bg-white border border-gray-200 rounded-2xl shadow-lg p-10">
+      <h2 class="text-3xl font-bold mb-4 text-gray-900">How We've Made</h2>
+      <div id="counter-value" class="text-6xl font-extrabold text-blue-900 transition-colors duration-500">0</div>
+      <p class="mt-4 text-xl text-gray-700">Grassroots Connections</p>
     </div>
-    <img src="your-image-2.jpg" alt="Stories" class="rounded shadow">
-  </div>
-
-  <!-- Block 3 -->
-  <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
-    <img src="your-image-3.jpg" alt="Integrated Engagement" class="rounded shadow">
-    <div>
-      <h2 class="text-3xl font-bold mb-4 text-blue-700">Integrated Engagement</h2>
-      <p class="text-gray-700 leading-relaxed">
-        We craft an integrated approach for your brand, handling everything from design and list building to activist engagement, website creation, and video production. Our goal is to deeply connect you with the people who matter most.
-      </p>
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<script>
-  function initCounter() {
-    const counterElement = document.getElementById('counter-value');
-    if (!counterElement) return;
-    const startNumber = 0;
-    const startDate = new Date('2025-01-01');
-    const today = new Date();
-    const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    const baseNumber = 1000000;
-    const dailyIncrement = 10;
-    const endNumber = baseNumber + (daysPassed * dailyIncrement);
-    const duration = 2000;
-    let startTime = null;
-    const animateCounter = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const increment = (endNumber - startNumber) * (progress / duration);
-      let currentNumber = Math.min(startNumber + increment, endNumber);
-      counterElement.textContent = Math.floor(currentNumber).toLocaleString('en-US');
-      if (progress < duration) {
-        window.requestAnimationFrame(animateCounter);
-      } else {
-        counterElement.textContent = endNumber.toLocaleString('en-US');
-      }
-    };
-    window.requestAnimationFrame(animateCounter);
-  }
-  document.addEventListener('DOMContentLoaded', () => {
-    const counterSection = document.querySelector('#counter-value');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          initCounter();
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-    observer.observe(counterSection);
-  });
-</script>
-
+  <!-- Engagement Section -->
+  <section class="container mx-auto py-16 px-4">
+    <!-- Block 1 -->
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <img src="assets/Loudoun-4-1672x1254.jpg" alt="Engagement" class="rounded shadow">
+      <div>
+        <h2 class="text-3xl font-bold mb-4 text-blue-700">Engagement that works</h2>
+        <p class="text-gray-700 leading-relaxed">
+          We specialize in engaging advocates across the country and at every level of government. Whether your focus is energy policy, local elections, healthcare initiatives, or national campaigns, our experienced team provides comprehensive support.
+        </p>
+      </div>
+    </div>
+    <!-- Block 2 -->
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <div>
+        <h2 class="text-3xl font-bold mb-4 text-blue-700">Stories that stand out</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Your unique story deserves to be heard. We create impactful brands and messaging designed to draw people to you and ensure your message resonates powerfully.
+        </p>
+      </div>
+      <img src="assets/criticalracetheory-768x503.jpg" alt="Stories" class="rounded shadow">
+    </div>
+    <!-- Block 3 -->
+    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <img src="assets/your-image-3.jpg" alt="Integrated Engagement" class="rounded shadow">
+      <div>
+        <h2 class="text-3xl font-bold mb-4 text-blue-700">Integrated Engagement</h2>
+        <p class="text-gray-700 leading-relaxed">
+          We craft an integrated approach for your brand, handling everything from design and list building to activist engagement, website creation, and video production. Our goal is to deeply connect you with the people who matter most.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Services -->
   <section id="services" class="container mx-auto py-16 px-4">
@@ -243,15 +141,64 @@
     </form>
   </section>
 
- <!-- Footer -->
-<footer class="bg-gray-800 text-white text-center py-6">
-  <img src="https://www.lindenstreetllc.com/footer-logo.png" alt="Footer logo" class="mx-auto h-10 mb-4">
-  
-  <p>&copy; 2025 Linden Street LLC. All Rights Reserved.</p>
-  
-  <div class="mt-4 space-x-4">
-    <a href="mailto:contact@lindenstreetllc.com" class="text-blue-400 hover:text-blue-300">contact@lindenstreetllc.com</a>
-    <span>|</span>
-    <a href="https://www.google.com" target="_blank" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>
-  </div>
-</footer>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-6">
+    <img src="assets/name-logo.png" alt="Footer logo" class="mx-auto h-10 mb-4">
+    <p>&copy; 2025 Linden Street LLC. All Rights Reserved.</p>
+    <div class="mt-4 space-x-4">
+      <a href="mailto:contact@lindenstreetllc.com" class="text-blue-400 hover:text-blue-300">contact@lindenstreetllc.com</a>
+      <span>|</span>
+      <a href="https://www.google.com" target="_blank" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    function initCounter() {
+      const counterElement = document.getElementById('counter-value');
+      if (!counterElement) return;
+
+      const startNumber = 0;
+      const startDate = new Date('2025-01-01');
+      const today = new Date();
+      const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+      const baseNumber = 1000000;
+      const dailyIncrement = 10;
+      const endNumber = baseNumber + (daysPassed * dailyIncrement);
+      const duration = 2000;
+      let startTime = null;
+
+      const animateCounter = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const increment = (endNumber - startNumber) * (progress / duration);
+        let currentNumber = Math.min(startNumber + increment, endNumber);
+
+        counterElement.textContent = Math.floor(currentNumber).toLocaleString('en-US');
+
+        if (progress < duration) {
+          window.requestAnimationFrame(animateCounter);
+        } else {
+          counterElement.textContent = endNumber.toLocaleString('en-US');
+          counterElement.classList.add('text-yellow-400');
+        }
+      };
+
+      window.requestAnimationFrame(animateCounter);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const counterSection = document.querySelector('#counter-value');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initCounter();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(counterSection);
+    });
+  </script>
+</body>
+</html>
