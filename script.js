@@ -1,3 +1,4 @@
+// Counter Animation
 function initCounter() {
   const counterElement = document.getElementById('counter-value');
   if (!counterElement) return;
@@ -24,12 +25,57 @@ function initCounter() {
       window.requestAnimationFrame(animateCounter);
     } else {
       counterElement.textContent = endNumber.toLocaleString('en-US');
+      counterElement.classList.add('text-yellow-400');
     }
   };
 
   window.requestAnimationFrame(animateCounter);
 }
 
+// Contact Form success message
+function formSubmitted() {
+  setTimeout(() => {
+    document.getElementById('success-message').classList.remove('hidden');
+  }, 500);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(initCounter, 100);
+  // Counter trigger when in view
+  const counterSection = document.querySelector('#counter-value');
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initCounter();
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  counterObserver.observe(counterSection);
+
+  // Engagement fade-in
+  const blocks = document.querySelectorAll('.engagement-block');
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  blocks.forEach(block => fadeObserver.observe(block));
+
+  // Services highlight cycling
+  const cards = document.querySelectorAll("#services .p-6");
+  let currentIndex = 0;
+
+  function highlightCard() {
+    cards.forEach(card => card.classList.remove("highlight"));
+    cards[currentIndex].classList.add("highlight");
+    currentIndex = (currentIndex + 1) % cards.length;
+  }
+
+  if (cards.length > 0) {
+    highlightCard(); // initial highlight
+    setInterval(highlightCard, 3000); // every 3 seconds
+  }
 });
