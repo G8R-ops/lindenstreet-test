@@ -2,6 +2,40 @@ html { scroll-behavior: smooth; }
 .nav-link { transition: color 0.3s ease; }
 .nav-link:hover { color: #1e40af; }
 
+/* Hero */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-gradient {
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0d9488, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-heading, .hero-subheading {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+.hero-heading { animation: fadeUp 1.2s ease forwards; }
+.hero-subheading { animation: fadeUp 1.5s ease forwards; }
+
+/* Engagement fade-in */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.engagement-block {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-in {
+  animation: fadeInUp 1.8s ease-out forwards;
+}
+
 /* Highlight effect for Services cards */
 .highlight {
   background-color: #1e3a8a !important;
