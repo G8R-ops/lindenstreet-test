@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initCounter() {
   const counterElement = document.getElementById('counter-value');
+  if (!counterElement) return; // Exit if element not found
+
   const startNumber = 0;
 
   const startDate = new Date('2025-01-01');
@@ -29,4 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.requestAnimationFrame(animateCounter);
+}
+
+// Run after DOM is fully ready
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(initCounter, 100); // slight delay to ensure element loads
 });
+
