@@ -11,42 +11,7 @@
   <meta property="og:description" content="Trusted partner in advocacy and strategy">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.lindenstreetllc.com/">
-
-  <style>
-    /* Hero animations */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .animated-gradient {
-      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0d9488, #0f172a);
-      background-size: 400% 400%;
-      animation: gradientShift 12s ease infinite;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-heading, .hero-subheading {
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-    }
-    .hero-heading { animation: fadeUp 1.2s ease forwards; }
-    .hero-subheading { animation: fadeUp 1.5s ease forwards; }
-
-    /* Engagement fade-in */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .engagement-block {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .fade-in {
-      animation: fadeInUp 1.8s ease-out forwards;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="font-sans">
 
@@ -83,7 +48,6 @@
 
   <!-- Engagement Section -->
   <section class="container mx-auto py-16 px-4">
-    <!-- Block 1 -->
     <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <img src="assets/Loudoun-4-1672x1254.jpg" alt="Engagement" class="rounded shadow">
       <div>
@@ -93,8 +57,6 @@
         </p>
       </div>
     </div>
-
-    <!-- Block 2 -->
     <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <div>
         <h2 class="text-3xl font-bold mb-4 text-blue-700">Stories that stand out</h2>
@@ -104,8 +66,6 @@
       </div>
       <img src="assets/criticalracetheory-768x503.jpg" alt="Stories" class="rounded shadow">
     </div>
-
-    <!-- Block 3 -->
     <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <img src="assets/your-image-3.jpg" alt="Integrated Engagement" class="rounded shadow">
       <div>
@@ -179,75 +139,6 @@
     </div>
   </footer>
 
-  <script>
-    // Counter Script
-    function initCounter() {
-      const counterElement = document.getElementById('counter-value');
-      if (!counterElement) return;
-
-      const startNumber = 0;
-      const startDate = new Date('2025-01-01');
-      const today = new Date();
-      const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-      const baseNumber = 1000000;
-      const dailyIncrement = 10;
-      const endNumber = baseNumber + (daysPassed * dailyIncrement);
-      const duration = 2000;
-      let startTime = null;
-
-      const animateCounter = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const increment = (endNumber - startNumber) * (progress / duration);
-        let currentNumber = Math.min(startNumber + increment, endNumber);
-
-        counterElement.textContent = Math.floor(currentNumber).toLocaleString('en-US');
-
-        if (progress < duration) {
-          window.requestAnimationFrame(animateCounter);
-        } else {
-          counterElement.textContent = endNumber.toLocaleString('en-US');
-          counterElement.classList.add('text-yellow-400');
-        }
-      };
-
-      window.requestAnimationFrame(animateCounter);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const counterSection = document.querySelector('#counter-value');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            initCounter();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(counterSection);
-    });
-
-    // Contact Form success
-    function formSubmitted() {
-      setTimeout(() => {
-        document.getElementById('success-message').classList.remove('hidden');
-      }, 500);
-    }
-
-    // Engagement fade-in on scroll
-    document.addEventListener("DOMContentLoaded", () => {
-      const blocks = document.querySelectorAll('.engagement-block');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      blocks.forEach(block => observer.observe(block));
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
