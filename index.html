@@ -5,24 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Linden Street LLC</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/Name-logo.png">
   <meta name="description" content="Linden Street LLC - Advocacy, Creative, Video Production, Grassroots Lobbying, Consulting, Digital Outreach.">
   <meta property="og:title" content="Linden Street LLC">
   <meta property="og:description" content="Trusted partner in advocacy and strategy">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.lindenstreetllc.com/">
-</head>
-<body class="font-sans">
-
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 bg-white shadow z-50">
-    <div class="container mx-auto flex justify-center items-center p-4">
-      <img src="assets/Name-logo.png" alt="Linden Street LLC" class="h-12">
-    </div>
-  </header>
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
+    /* Hero animations */
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -37,17 +29,54 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .hero-heading, .hero-subheading {
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
     .hero-heading { animation: fadeUp 1.2s ease forwards; }
     .hero-subheading { animation: fadeUp 1.5s ease forwards; }
+
+    /* Engagement fade-in */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .engagement-block {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .fade-in {
+      animation: fadeInUp 1.8s ease-out forwards;
+    }
+
+    /* Highlight effect for Services cards */
+    .highlight {
+      background-color: #1e3a8a !important;
+      color: white !important;
+      transform: scale(1.05);
+      transition: background-color 0.5s ease, transform 0.5s ease, color 0.5s ease;
+    }
+    .highlight img {
+      filter: brightness(0) invert(1);
+      transition: filter 0.5s ease;
+    }
   </style>
+</head>
+<body class="font-sans">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white shadow z-50">
+    <div class="container mx-auto flex justify-center items-center p-4">
+      <img src="assets/Name-logo.png" alt="Linden Street LLC" class="h-12">
+    </div>
+  </header>
 
   <!-- Hero -->
   <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
     <div class="absolute inset-0 animated-gradient"></div>
     <div class="absolute inset-0 bg-black opacity-30"></div>
-    <div class="relative text-center px-6">
-      <h1 class="hero-heading text-4xl md:text-6xl font-extrabold leading-tight mb-4">Building Brands</h1>
-      <h2 class="hero-subheading text-3xl md:text-5xl font-extrabold text-yellow-300">Activating Grassroots</h2>
+    <div class="relative text-center px-6 max-w-4xl mx-auto">
+      <h1 class="hero-heading text-5xl md:text-7xl font-extrabold leading-tight mb-6">Building Brands</h1>
+      <h2 class="hero-subheading text-4xl md:text-6xl font-extrabold text-yellow-300">Activating Grassroots</h2>
     </div>
   </section>
 
@@ -67,8 +96,7 @@
 
   <!-- Engagement Section -->
   <section class="container mx-auto py-16 px-4">
-    <!-- Block 1 -->
-    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+    <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <img src="assets/Loudoun-4-1672x1254.jpg" alt="Engagement" class="rounded shadow">
       <div>
         <h2 class="text-3xl font-bold mb-4 text-blue-700">Engagement that works</h2>
@@ -77,8 +105,7 @@
         </p>
       </div>
     </div>
-    <!-- Block 2 -->
-    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+    <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <div>
         <h2 class="text-3xl font-bold mb-4 text-blue-700">Stories that stand out</h2>
         <p class="text-gray-700 leading-relaxed">
@@ -87,8 +114,7 @@
       </div>
       <img src="assets/criticalracetheory-768x503.jpg" alt="Stories" class="rounded shadow">
     </div>
-    <!-- Block 3 -->
-    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+    <div class="engagement-block grid md:grid-cols-2 gap-8 items-center mb-12">
       <img src="assets/your-image-3.jpg" alt="Integrated Engagement" class="rounded shadow">
       <div>
         <h2 class="text-3xl font-bold mb-4 text-blue-700">Integrated Engagement</h2>
@@ -133,28 +159,18 @@
   <!-- Contact -->
   <section id="contact" class="container mx-auto py-16 px-4 text-center">
     <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-
-    <!-- Hidden iframe to prevent redirect -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
     <form 
       action="https://docs.google.com/forms/d/e/1FAIpQLSeY0xZw-JpdOGkBctQfC5vFPZHe6qxVD-8av5gD8fa3HfIKIA/formResponse" 
       method="POST" 
       target="hidden_iframe" 
       onsubmit="formSubmitted()" 
       class="max-w-lg mx-auto bg-white shadow p-6 rounded">
-
-      <input type="text" name="entry.295846301" placeholder="Your Name" 
-             class="w-full border p-2 mb-4 rounded" required>
-      <input type="email" name="entry.1167689731" placeholder="Your Email" 
-             class="w-full border p-2 mb-4 rounded" required>
-      <textarea name="entry.1033462780" placeholder="Your Message" 
-                class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
-
+      <input type="text" name="entry.295846301" placeholder="Your Name" class="w-full border p-2 mb-4 rounded" required>
+      <input type="email" name="entry.1167689731" placeholder="Your Email" class="w-full border p-2 mb-4 rounded" required>
+      <textarea name="entry.1033462780" placeholder="Your Message" class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
       <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-700">Send</button>
     </form>
-
-    <!-- Success Message -->
     <div id="success-message" class="hidden mt-4 text-green-600 font-semibold">
       ✅ Thank you! Your message has been sent.
     </div>
@@ -171,61 +187,6 @@
     </div>
   </footer>
 
-  <script>
-    // Counter Script
-    function initCounter() {
-      const counterElement = document.getElementById('counter-value');
-      if (!counterElement) return;
-
-      const startNumber = 0;
-      const startDate = new Date('2025-01-01');
-      const today = new Date();
-      const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-      const baseNumber = 1000000;
-      const dailyIncrement = 10;
-      const endNumber = baseNumber + (daysPassed * dailyIncrement);
-      const duration = 2000;
-      let startTime = null;
-
-      const animateCounter = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const increment = (endNumber - startNumber) * (progress / duration);
-        let currentNumber = Math.min(startNumber + increment, endNumber);
-
-        counterElement.textContent = Math.floor(currentNumber).toLocaleString('en-US');
-
-        if (progress < duration) {
-          window.requestAnimationFrame(animateCounter);
-        } else {
-          counterElement.textContent = endNumber.toLocaleString('en-US');
-          counterElement.classList.add('text-yellow-400');
-        }
-      };
-
-      window.requestAnimationFrame(animateCounter);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const counterSection = document.querySelector('#counter-value');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            initCounter();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(counterSection);
-    });
-
-    // Contact Form success
-    function formSubmitted() {
-      setTimeout(() => {
-        document.getElementById('success-message').classList.remove('hidden');
-      }, 500);
-    }
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
