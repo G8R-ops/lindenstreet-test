@@ -47,3 +47,6 @@ html { scroll-behavior: smooth; }
   filter: brightness(0) invert(1);
   transition: filter 0.5s ease;
 }
+.hero-video {
+  object-position: center 10%;
+}
