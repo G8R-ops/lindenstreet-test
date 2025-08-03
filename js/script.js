@@ -78,4 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightCard(); // initial
     setInterval(highlightCard, 3000); // every 3s
   }
+
+  const scrollBtn = document.getElementById('scroll-to-top');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  }
 });
