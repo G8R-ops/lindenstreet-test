@@ -50,3 +50,8 @@ html { scroll-behavior: smooth; }
 .hero-video {
   object-position: center 10%;
 }
+
+.hero-video {
+  object-fit: cover;
+  transform: translateY(-10%);
+}
