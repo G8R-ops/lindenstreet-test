@@ -6,10 +6,9 @@ function formSubmitted() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Counter trigger when in view
   const counterSection = document.querySelector('#counter-value');
   const donutProgress = document.getElementById('donut-progress');
-  
+
   const startNumber = 0;
   const startDate = new Date('2025-01-01');
   const today = new Date();
@@ -18,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyIncrement = 10;
   const endNumber = baseNumber + (daysPassed * dailyIncrement);
   const duration = 5000;
-  const circumference = 2 * Math.PI * 54; // radius of donut
+  const radius = 54;
+  const circumference = 2 * Math.PI * radius;
   let startTime = null;
 
   function animateCounter(timestamp) {
@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateCounter);
     } else {
       counterSection.textContent = endNumber.toLocaleString();
+      counterSection.style.color = '#FACC15'; // Tailwind yellow-400
+      donutProgress.style.stroke = '#FACC15';
       donutProgress.style.strokeDashoffset = 0;
-      counterSection.classList.add('text-yellow-400', 'animate-pulse');
     }
   }
 
@@ -46,16 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
     donutProgress.style.strokeDashoffset = circumference;
   }
 
-  const counterObserver = new IntersectionObserver(entries => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         requestAnimationFrame(animateCounter);
-        counterObserver.disconnect();
+        observer.disconnect();
       }
     });
   }, { threshold: 0.5 });
 
-  if (counterSection) counterObserver.observe(counterSection);
+  if (counterSection) observer.observe(counterSection);
+});
 
   // Engagement fade-in
   const blocks = document.querySelectorAll('.engagement-block');
