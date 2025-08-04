@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyIncrement = 10;
   const endNumber = baseNumber + (daysPassed * dailyIncrement);
   const duration = 3500;
-  const radius = 54;
+  const radius = 70;
   const circumference = 2 * Math.PI * radius;
   let startTime = null;
 
