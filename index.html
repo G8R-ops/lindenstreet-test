@@ -62,9 +62,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <section class="relative w-full py-20 bg-white text-center overflow-hidden">
-  <!-- Map Background -->
-  <div class="absolute inset-0">
-    <img src="assets/us-map.svg" alt="US Map" class="w-full h-full object-contain opacity-20 mx-auto">
+  <!-- Inline US Map with state paths -->
+  <div class="absolute inset-0 flex justify-center">
+    <svg id="us-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" class="w-full max-w-6xl opacity-20">
+      <!-- Example state paths (replace with full US state paths from your SVG) -->
+      <path id="CA" d="M100,200 L150,250 ..." />
+      <path id="TX" d="M300,400 L350,450 ..." />
+      <path id="NY" d="M700,100 L720,120 ..." />
+      <!-- Add remaining state paths from us-map.svg -->
+    </svg>
     <canvas id="map-dots" class="absolute top-0 left-0 w-full h-full"></canvas>
   </div>
 
@@ -82,6 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </svg>
   </div>
 </section>
+
 
   <!-- Engagement Section -->
   <section class="container mx-auto py-16 px-4">
