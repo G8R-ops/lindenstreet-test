@@ -61,19 +61,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-  <!-- Counter -->
-  <section class="relative py-20 bg-white text-center">
-    <div class="max-w-xl mx-auto relative z-10 bg-white border border-gray-200 rounded-2xl shadow-lg p-10">
-      <h2 class="text-3xl font-bold mb-4 text-gray-900">How We've Made</h2>
-      <div id="counter-value" class="text-6xl font-extrabold text-blue-900 transition-colors duration-500">0</div>
-      <p class="mt-4 text-xl text-gray-700">Grassroots Connections</p>
-    </div>
-    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </section>
+ <section class="relative w-full py-20 bg-white text-center overflow-hidden">
+  <!-- Map Background -->
+  <div class="absolute inset-0">
+    <img src="assets/us-map.svg" alt="US Map" class="w-full h-full object-cover opacity-20">
+    <!-- Canvas for Animated Dots -->
+    <canvas id="map-dots" class="absolute top-0 left-0 w-full h-full"></canvas>
+  </div>
+
+  <!-- Counter Box -->
+  <div class="relative z-10 max-w-xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-lg p-10">
+    <h2 class="text-3xl font-bold mb-4 text-gray-900">How We've Made</h2>
+    <div id="counter-value" class="text-6xl font-extrabold text-blue-900 transition-colors duration-500">0</div>
+    <p class="mt-4 text-xl text-gray-700">Grassroots Connections</p>
+  </div>
+</section>
 
   <!-- Engagement Section -->
   <section class="container mx-auto py-16 px-4">
