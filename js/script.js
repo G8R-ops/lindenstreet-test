@@ -86,3 +86,70 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const counterElement = document.getElementById('counter-value');
+  const canvas = document.getElementById('map-dots');
+  const ctx = canvas.getContext('2d');
+  const dots = [];
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function addDot() {
+    dots.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      opacity: 0
+    });
+  }
+
+  function animateDots() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dots.forEach(dot => {
+      dot.opacity = Math.min(dot.opacity + 0.05, 1);
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(30, 58, 138, ${dot.opacity})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animateDots);
+  }
+  animateDots();
+
+  const startNumber = 0;
+  const startDate = new Date('2025-01-01');
+  const today = new Date();
+  const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+  const baseNumber = 1000000;
+  const dailyIncrement = 10;
+  const endNumber = baseNumber + (daysPassed * dailyIncrement);
+
+  const duration = 5000;
+  let startTime = null;
+
+  function animateCounter(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    const increment = (endNumber - startNumber) * (progress / duration);
+    let currentNumber = Math.min(startNumber + increment, endNumber);
+
+    counterElement.textContent = Math.floor(currentNumber).toLocaleString();
+
+    const targetDots = Math.floor(currentNumber / 1000);
+    while (dots.length < targetDots) addDot();
+
+    if (progress < duration) {
+      window.requestAnimationFrame(animateCounter);
+    } else {
+      counterElement.textContent = endNumber.toLocaleString();
+      counterElement.classList.add('text-yellow-400');
+    }
+  }
+
+  window.requestAnimationFrame(animateCounter);
+});
+
