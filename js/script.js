@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   const counterElement = document.getElementById('counter-value');
   const canvas = document.getElementById('map-dots');
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function addDot() {
     dots.push({
       x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+      y: (Math.random() * 0.7 + 0.15) * canvas.height, // Keep dots centered
       opacity: 0
     });
   }
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.forEach(dot => {
       dot.opacity = Math.min(dot.opacity + 0.05, 1);
       ctx.beginPath();
-      ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2);
+      ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2); // smaller dots
       ctx.fillStyle = `rgba(30, 58, 138, ${dot.opacity})`;
       ctx.fill();
     });
@@ -146,10 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
       window.requestAnimationFrame(animateCounter);
     } else {
       counterElement.textContent = endNumber.toLocaleString();
-      counterElement.classList.add('text-yellow-400');
+      counterElement.classList.add('text-yellow-400', 'animate-pulse'); // glow effect
     }
   }
 
   window.requestAnimationFrame(animateCounter);
 });
-
