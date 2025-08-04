@@ -6,6 +6,7 @@ function formSubmitted() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ===== Counter Donut =====
   const counterSection = document.querySelector('#counter-value');
   const donutProgress = document.getElementById('donut-progress');
 
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyIncrement = 10;
   const endNumber = baseNumber + (daysPassed * dailyIncrement);
 
-  const duration = 3500; // slightly faster
+  const duration = 3500;
   const radius = 85;
   const circumference = 2 * Math.PI * radius;
   let startTime = null;
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateCounter);
     } else {
       counterSection.textContent = endNumber.toLocaleString();
-      counterSection.style.color = '#FACC15'; // yellow-400
+      counterSection.style.color = '#FACC15'; // yellow
       donutProgress.style.stroke = '#FACC15';
       donutProgress.style.strokeDashoffset = 0;
     }
@@ -58,4 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   if (counterSection) observer.observe(counterSection);
+
+  // ===== Engagement Fade-In =====
+  const blocks = document.querySelectorAll('.engagement-block');
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  blocks.forEach(block => fadeObserver.observe(block));
 });
