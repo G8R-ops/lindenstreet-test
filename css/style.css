@@ -56,3 +56,16 @@ html { scroll-behavior: smooth; }
   object-fit: cover;
   object-position: center 80%;
 }
+/* Make donut ring thicker */
+#donut-progress {
+  stroke-width: 14; /* was likely 8–10 before */
+  transition: stroke 0.5s ease;
+}
+
+/* Adjust number size for better visual balance */
+#counter-value {
+  font-size: 2rem; /* smaller inner number */
+  font-weight: bold;
+  transition: color 0.5s ease;
+}
+
