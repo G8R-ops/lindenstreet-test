@@ -91,29 +91,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterElement = document.getElementById('counter-value');
   const canvas = document.getElementById('map-dots');
   const ctx = canvas.getContext('2d');
+  const map = document.getElementById('us-map');
+  const statePaths = map.querySelectorAll('path');
   const dots = [];
 
+  // Resize canvas
   function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = map.clientWidth;
+    canvas.height = map.clientHeight;
   }
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  function addDot() {
-    dots.push({
-      x: Math.random() * canvas.width,
-      y: (Math.random() * 0.7 + 0.15) * canvas.height, // Keep dots centered
-      opacity: 0
-    });
+  // Helper: random point inside a path
+  function randomPointInPath(pathElement) {
+    const bbox = pathElement.getBBox();
+    let x, y;
+    do {
+      x = bbox.x + Math.random() * bbox.width;
+      y = bbox.y + Math.random() * bbox.height;
+    } while (!pathElement.isPointInFill(new DOMPoint(x, y)));
+    return { x, y };
   }
 
+  // Add a dot in a random state
+  function addDot() {
+    const randomState = statePaths[Math.floor(Math.random() * statePaths.length)];
+    const { x, y } = randomPointInPath(randomState);
+    dots.push({ x, y, opacity: 0 });
+  }
+
+  // Animate dots
   function animateDots() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     dots.forEach(dot => {
       dot.opacity = Math.min(dot.opacity + 0.05, 1);
       ctx.beginPath();
-      ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2); // smaller dots
+      ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(30, 58, 138, ${dot.opacity})`;
       ctx.fill();
     });
@@ -121,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   animateDots();
 
+  // Counter setup
   const startNumber = 0;
   const startDate = new Date('2025-01-01');
   const today = new Date();
@@ -132,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const duration = 5000;
   let startTime = null;
 
+  // Animate counter
   function animateCounter(timestamp) {
     if (!startTime) startTime = timestamp;
     const progress = timestamp - startTime;
@@ -147,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.requestAnimationFrame(animateCounter);
     } else {
       counterElement.textContent = endNumber.toLocaleString();
-      counterElement.classList.add('text-yellow-400', 'animate-pulse'); // glow effect
+      counterElement.classList.add('text-yellow-400', 'animate-pulse');
     }
   }
 
