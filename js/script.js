@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const baseNumber = 1000000;
   const dailyIncrement = 10;
   const endNumber = baseNumber + (daysPassed * dailyIncrement);
-  const duration = 3500;
-  const radius = 70;
+
+  const duration = 3500; // slightly faster
+  const radius = 85;
   const circumference = 2 * Math.PI * radius;
   let startTime = null;
 
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateCounter);
     } else {
       counterSection.textContent = endNumber.toLocaleString();
-      counterSection.style.color = '#FACC15'; // Tailwind yellow-400
+      counterSection.style.color = '#FACC15'; // yellow-400
       donutProgress.style.stroke = '#FACC15';
       donutProgress.style.strokeDashoffset = 0;
     }
@@ -57,39 +58,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   if (counterSection) observer.observe(counterSection);
-
-  // Engagement fade-in
-  const blocks = document.querySelectorAll('.engagement-block');
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  blocks.forEach(block => fadeObserver.observe(block));
-
-  // Services highlight cycling
-  const cards = document.querySelectorAll("#services .p-6");
-  let currentIndex = 0;
-
-  function highlightCard() {
-    cards.forEach(card => card.classList.remove("highlight"));
-    cards[currentIndex].classList.add("highlight");
-    currentIndex = (currentIndex + 1) % cards.length;
-  }
-
-  if (cards.length > 0) {
-    highlightCard(); // initial
-    setInterval(highlightCard, 3000); // every 3s
-  }
-
-  // Scroll-to-top button
-  const scrollBtn = document.getElementById('scroll-to-top');
-  if (scrollBtn) {
-    scrollBtn.addEventListener('click', () =>
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    );
-  }
 });
