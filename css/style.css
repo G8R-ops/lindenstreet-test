@@ -63,7 +63,7 @@ html { scroll-behavior: smooth; }
   transition: stroke 0.5s ease;
 }
 #counter-value {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   transition: color 0.5s ease;
 }
