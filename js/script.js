@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   if (counterSection) observer.observe(counterSection);
-});
 
   // Engagement fade-in
   const blocks = document.querySelectorAll('.engagement-block');
