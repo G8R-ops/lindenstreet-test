@@ -60,6 +60,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (counterSection) observer.observe(counterSection);
 
+  // ===== Services Highlight Rotation =====
+  const serviceCards = document.querySelectorAll('#services .service-card');
+  let currentServiceIndex = 0;
+
+  function highlightNextService() {
+    serviceCards.forEach((card, index) => {
+      if (index === currentServiceIndex) {
+        card.classList.add('highlight');
+      } else {
+        card.classList.remove('highlight');
+      }
+    });
+    currentServiceIndex = (currentServiceIndex + 1) % serviceCards.length;
+  }
+
+  if (serviceCards.length) {
+    highlightNextService();
+    setInterval(highlightNextService, 2000);
+  }
+
   // ===== Engagement Fade-In =====
   const blocks = document.querySelectorAll('.engagement-block');
   const fadeObserver = new IntersectionObserver(entries => {
