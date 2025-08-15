@@ -1,8 +1,21 @@
 // Contact Form redirect after submission
-function formSubmitted() {
-  setTimeout(() => {
-    window.location.href = 'https://www.lindenstreetllc.com/?form_submitted=true';
-  }, 500);
+function formSubmitted(event) {
+  event.preventDefault();
+
+  const redirectUrl = 'https://www.lindenstreetllc.com/?form_submitted=true';
+  const iframe = document.getElementById('hidden_iframe');
+
+  if (iframe) {
+    iframe.addEventListener(
+      'load',
+      () => {
+        window.location.href = redirectUrl;
+      },
+      { once: true }
+    );
+  }
+
+  event.target.submit();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
