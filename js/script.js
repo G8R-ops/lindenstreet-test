@@ -1,11 +1,19 @@
-// Contact Form success message
+// Contact Form redirect after submission
 function formSubmitted() {
   setTimeout(() => {
-    document.getElementById('success-message').classList.remove('hidden');
+    window.location.href = 'https://www.lindenstreetllc.com/?form_submitted=true';
   }, 500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('form_submitted') === 'true') {
+    const topMessage = document.getElementById('top-success-message');
+    if (topMessage) topMessage.classList.remove('hidden');
+    const successMessage = document.getElementById('success-message');
+    if (successMessage) successMessage.classList.remove('hidden');
+  }
+
   // ===== Counter Donut =====
   const counterSection = document.querySelector('#counter-value');
   const donutProgress = document.getElementById('donut-progress');
