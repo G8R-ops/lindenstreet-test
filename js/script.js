@@ -113,6 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.3 });
   blocks.forEach(block => fadeObserver.observe(block));
 
+  // ===== Sticky Text Visibility =====
+  const stickyTexts = document.querySelectorAll('.sticky-text');
+  const textObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.6 });
+  stickyTexts.forEach(text => textObserver.observe(text));
+
   // ===== Parallax Scrolling for Engagement Sections =====
   const parallaxItems = document.querySelectorAll('[data-parallax-speed]');
 
