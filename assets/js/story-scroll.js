@@ -2,6 +2,8 @@
   const section = document.getElementById('story-scroll');
   if (!section) return;
 
+  if (window.matchMedia('(max-width: 991px)').matches) return;
+
   const copies = Array.from(section.querySelectorAll('.lsl-copy'));
   const dots = Array.from(section.querySelectorAll('.lsl-dot'));
   const frames = Array.from(section.querySelectorAll('.lsl-frame'));

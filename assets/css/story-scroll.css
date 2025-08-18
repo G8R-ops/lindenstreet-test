@@ -133,8 +133,26 @@
   object-fit: cover;
   display: block;
 }
+/* Mobile-specific copy blocks hidden on desktop */
+.lsl-mobile-copy {
+  display: none;
+}
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .lsl-copy { transition: none; }
+}
+
+@media (max-width: 991px) {
+  .lsl-left { display: none; }
+  .lsl-frame { min-height: auto; }
+  .lsl-mobile-copy {
+    display: block;
+    padding: 1rem;
+    background: var(--lsl-card);
+    border: 1px solid var(--lsl-border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+  }
 }
 
