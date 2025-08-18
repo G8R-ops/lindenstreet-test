@@ -5,36 +5,31 @@
   const copies = Array.from(section.querySelectorAll('.lsl-copy'));
   const dots = Array.from(section.querySelectorAll('.lsl-dot'));
   const frames = Array.from(section.querySelectorAll('.lsl-frame'));
+  let current = -1;
 
   // Helper to set active index (updates text + dots)
   function setActive(idx) {
+    if (idx === current) return;
     copies.forEach((el, i) => {
       el.classList.toggle('is-active', i === idx);
-      // Update eyebrow “Section X of N”
-      const eyebrow = el.querySelector('.lsl-eyebrow');
-      if (eyebrow) eyebrow.textContent = `Section ${idx + 1} of ${copies.length}`;
     });
     dots.forEach((d, i) => {
       const active = i === idx;
       d.classList.toggle('is-active', active);
       d.setAttribute('aria-current', active ? 'true' : 'false');
     });
+    current = idx;
   }
 
-  // Scroll → detect which frame is most visible
-  const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
-  const io = new IntersectionObserver((entries) => {
-    // choose the intersecting entry with highest ratio
-    const visible = entries
-      .filter((e) => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-    const idx = frames.indexOf(visible.target);
+  // Scroll → activate frame occupying viewport center
+  function onScroll() {
+    const mid = window.innerHeight / 2;
+    const idx = frames.findIndex(frame => {
+      const rect = frame.getBoundingClientRect();
+      return rect.top <= mid && rect.bottom >= mid;
+    });
     if (idx !== -1) setActive(idx);
-  }, { root: null, rootMargin: '0px', threshold: thresholds });
-
-  frames.forEach((f) => io.observe(f));
+  }
 
   // Dots → scroll to specific frame
   dots.forEach((btn) => {
@@ -48,7 +43,11 @@
     });
   });
 
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
   // Initialize
   setActive(0);
+  onScroll();
 })();
 
