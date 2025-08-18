@@ -1,0 +1,150 @@
+/* Brand hooks (use your site’s existing variables if available) */
+:root {
+  --lsl-text: var(--brand-text, #111);
+  --lsl-muted: var(--brand-muted, #6b7280);
+  --lsl-accent: var(--brand-accent, #0ea5e9);
+  --lsl-card: #fff;
+  --lsl-border: rgba(0,0,0,.08);
+  --sticky-top: 6rem; /* adjust if header height differs */
+  --radius: 1rem;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --fade-dur: .45s;
+}
+
+#story-scroll {
+  color: var(--lsl-text);
+  background: var(--brand-section-bg, #fff);
+  padding: clamp(2rem, 3vw, 3rem) 0;
+  overflow: clip;
+}
+
+.lsl-container {
+  width: min(1080px, 92%);
+  margin-inline: auto;
+}
+
+.lsl-header {
+  margin-bottom: 1rem;
+}
+.lsl-title {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+.lsl-kicker {
+  color: var(--lsl-muted);
+  margin-top: .25rem;
+  font-size: .9rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.lsl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 992px) {
+  .lsl-grid { grid-template-columns: 1fr 1.2fr; gap: 1.75rem; }
+}
+
+.lsl-left { position: relative; }
+.lsl-sticky-card {
+  position: sticky;
+  top: var(--sticky-top);
+  background: var(--lsl-card);
+  border: 1px solid var(--lsl-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+}
+
+.lsl-sticky-viewport {
+  position: relative;
+  min-height: clamp(40vh, 50vh, 60vh);
+}
+.lsl-copy {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--fade-dur) ease, transform var(--fade-dur) ease;
+  pointer-events: none;
+}
+.lsl-copy.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.lsl-eyebrow {
+  color: var(--lsl-muted);
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 0 0 .5rem 0;
+}
+.lsl-h3 {
+  margin: 0 0 .5rem 0;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  line-height: 1.25;
+}
+.lsl-body {
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  color: color-mix(in oklab, var(--lsl-text) 80%, white);
+}
+
+.lsl-dots {
+  margin-top: .75rem;
+  display: flex;
+  gap: .5rem;
+}
+.lsl-dot {
+  width: .5rem; height: .5rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--lsl-muted);
+  opacity: .35;
+  cursor: pointer;
+}
+.lsl-dot.is-active {
+  background: var(--lsl-text);
+  opacity: 1;
+}
+.lsl-dot:focus-visible {
+  outline: 2px solid var(--lsl-accent);
+  outline-offset: 2px;
+}
+
+.lsl-right { display: grid; gap: 1rem; }
+.lsl-frame {
+  position: relative;
+  min-height: 100vh;
+  border: 1px solid var(--lsl-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #f7f7f7;
+}
+.lsl-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lsl-frame-label {
+  position: absolute;
+  left: .75rem; bottom: .75rem;
+  background: rgba(255,255,255,.9);
+  padding: .25rem .5rem;
+  font-size: .75rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .lsl-copy { transition: none; }
+}
+

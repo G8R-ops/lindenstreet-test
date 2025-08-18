@@ -23,6 +23,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.lindenstreetllc.com/">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/story-scroll.css">
 </head>
 <body class="font-sans">
 
@@ -83,6 +84,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
+    </div>
+  </section>
+
+  <section id="story-scroll" class="lsl-section">
+    <div class="lsl-container">
+      <header class="lsl-header">
+        <h2 class="lsl-title">How We Build Momentum</h2>
+        <p class="lsl-kicker">Engagement • Story • Proof</p>
+      </header>
+
+      <div class="lsl-grid">
+        <!-- LEFT: sticky, cross-fading text -->
+        <div class="lsl-left">
+          <div class="lsl-sticky-card">
+            <div class="lsl-sticky-viewport" aria-live="polite">
+              <!-- Active text block is swapped by JS (cross-fade via CSS) -->
+              <article class="lsl-copy is-active" data-index="0">
+                <p class="lsl-eyebrow">Section 1 of 4</p>
+                <h3 class="lsl-h3">Engage Your Audience</h3>
+                <p class="lsl-body">Keep your message crisp and focused. Lead with a benefit, support with proof, and finish with a clear next step.</p>
+              </article>
+
+              <article class="lsl-copy" data-index="1">
+                <p class="lsl-eyebrow">Section 2 of 4</p>
+                <h3 class="lsl-h3">Tell a Clear Story</h3>
+                <p class="lsl-body">Organize ideas into bite-size chapters. Give each scroll a purpose so readers always know where they are.</p>
+              </article>
+
+              <article class="lsl-copy" data-index="2">
+                <p class="lsl-eyebrow">Section 3 of 4</p>
+                <h3 class="lsl-h3">Show, Don’t Just Tell</h3>
+                <p class="lsl-body">Pair narrative with strong visuals. The right image can do the heavy lifting and make ideas memorable.</p>
+              </article>
+
+              <article class="lsl-copy" data-index="3">
+                <p class="lsl-eyebrow">Section 4 of 4</p>
+                <h3 class="lsl-h3">Guide the Scroll</h3>
+                <p class="lsl-body">Use subtle motion and contrast to guide attention. Let one focal point shine at a time.</p>
+              </article>
+            </div>
+
+            <!-- Progress dots -->
+            <div class="lsl-dots" role="tablist" aria-label="Section progress">
+              <button class="lsl-dot is-active" data-go="0" aria-current="true" aria-label="Go to section 1"></button>
+              <button class="lsl-dot" data-go="1" aria-label="Go to section 2"></button>
+              <button class="lsl-dot" data-go="2" aria-label="Go to section 3"></button>
+              <button class="lsl-dot" data-go="3" aria-label="Go to section 4"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: scrolling images (one section per viewport) -->
+        <div class="lsl-right" id="lsl-image-track">
+          <!-- Replace src with your real assets; keep the structure -->
+          <section class="lsl-frame" data-index="0">
+            <img src="assets/Loudoun-4-1672x1254.jpg" alt="Grassroots volunteers canvassing" loading="lazy" decoding="async" />
+            <div class="lsl-frame-label">Image 1</div>
+          </section>
+
+          <section class="lsl-frame" data-index="1">
+            <img src="assets/criticalracetheory-768x503.jpg" alt="Creative team storyboarding a campaign" loading="lazy" decoding="async" />
+            <div class="lsl-frame-label">Image 2</div>
+          </section>
+
+          <section class="lsl-frame" data-index="2">
+            <img src="assets/your-image-3.jpg" alt="Community event engagement" loading="lazy" decoding="async" />
+            <div class="lsl-frame-label">Image 3</div>
+          </section>
+
+          <section class="lsl-frame" data-index="3">
+            <img src="assets/Name-logo.png" alt="Video production on location" loading="lazy" decoding="async" />
+            <div class="lsl-frame-label">Image 4</div>
+          </section>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -181,6 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+  <script src="assets/js/story-scroll.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
