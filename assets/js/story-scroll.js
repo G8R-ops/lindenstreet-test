@@ -21,15 +21,20 @@
     current = idx;
   }
 
-  // Scroll → activate frame occupying viewport center
-  function onScroll() {
-    const mid = window.innerHeight / 2;
-    const idx = frames.findIndex(frame => {
-      const rect = frame.getBoundingClientRect();
-      return rect.top <= mid && rect.bottom >= mid;
-    });
-    if (idx !== -1) setActive(idx);
-  }
+  // IntersectionObserver → activate frame when majority is visible
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = parseInt(entry.target.getAttribute('data-index'), 10);
+          setActive(idx);
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  frames.forEach((frame) => observer.observe(frame));
 
   // Dots → scroll to specific frame
   dots.forEach((btn) => {
@@ -38,16 +43,11 @@
       const target = frames[idx];
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActive(idx);
       }
     });
   });
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-
   // Initialize
   setActive(0);
-  onScroll();
 })();
 
