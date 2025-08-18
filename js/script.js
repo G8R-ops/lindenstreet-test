@@ -112,4 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.3 });
   blocks.forEach(block => fadeObserver.observe(block));
+
+  // ===== Parallax Scrolling for Engagement Sections =====
+  const parallaxItems = document.querySelectorAll('[data-parallax-speed]');
+
+  function handleParallax() {
+    const scrollTop = window.pageYOffset;
+    parallaxItems.forEach(item => {
+      const speed = parseFloat(item.dataset.parallaxSpeed);
+      item.style.transform = `translateY(${scrollTop * speed * -1}px)`;
+    });
+  }
+
+  handleParallax();
+  window.addEventListener('scroll', handleParallax);
 });
