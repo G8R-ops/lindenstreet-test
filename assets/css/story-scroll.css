@@ -133,16 +133,6 @@
   object-fit: cover;
   display: block;
 }
-.lsl-frame-label {
-  position: absolute;
-  left: .75rem; bottom: .75rem;
-  background: rgba(255,255,255,.9);
-  padding: .25rem .5rem;
-  font-size: .75rem;
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-}
-
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .lsl-copy { transition: none; }

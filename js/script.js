@@ -101,42 +101,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(highlightNextService, 2000);
   }
 
-  // ===== Engagement Fade-In =====
-  const blocks = document.querySelectorAll('.engagement-block');
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  blocks.forEach(block => fadeObserver.observe(block));
-
-  // ===== Sticky Text Visibility =====
-  const stickyTexts = document.querySelectorAll('.sticky-text');
-  const textObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-  }, { threshold: 0.6 });
-  stickyTexts.forEach(text => textObserver.observe(text));
-
-  // ===== Parallax Scrolling for Engagement Sections =====
-  const parallaxItems = document.querySelectorAll('[data-parallax-speed]');
-
-  function handleParallax() {
-    const scrollTop = window.pageYOffset;
-    parallaxItems.forEach(item => {
-      const speed = parseFloat(item.dataset.parallaxSpeed);
-      item.style.transform = `translateY(${scrollTop * speed * -1}px)`;
-    });
-  }
-
-  handleParallax();
-  window.addEventListener('scroll', handleParallax);
 });

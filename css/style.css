@@ -23,19 +23,6 @@ html { scroll-behavior: smooth; }
 .hero-heading { animation: fadeUp 1.2s ease forwards; }
 .hero-subheading { animation: fadeUp 1.5s ease forwards; }
 
-/* Engagement fade-in */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.engagement-block {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.fade-in {
-  animation: fadeInUp 1.8s ease-out forwards;
-}
-
 /* Highlight effect for Services cards */
 .highlight {
   background-color: #1e3a8a !important;
@@ -68,23 +55,3 @@ html { scroll-behavior: smooth; }
   transition: color 0.5s ease;
 }
 
-/* Parallax elements */
-.parallax {
-  will-change: transform;
-}
-
-/* Sticky text for engagement sections */
-.sticky-text {
-  position: sticky;
-  top: 4rem;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.sticky-text.visible {
-  opacity: 1;
-}
-
-/* Slight adjustment for the final engagement image */
-.unified-image {
-  margin-top: -1.5rem;
-}
