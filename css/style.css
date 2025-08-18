@@ -73,6 +73,17 @@ html { scroll-behavior: smooth; }
   will-change: transform;
 }
 
+/* Sticky text for engagement sections */
+.sticky-text {
+  position: sticky;
+  top: 4rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.sticky-text.visible {
+  opacity: 1;
+}
+
 /* Slight adjustment for the final engagement image */
 .unified-image {
   margin-top: -1.5rem;
