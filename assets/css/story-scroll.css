@@ -144,15 +144,19 @@
 
 @media (max-width: 991px) {
   .lsl-left { display: none; }
-  .lsl-frame { min-height: auto; }
+  .lsl-frame {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .lsl-frame img {
+    height: auto;
+  }
   .lsl-mobile-copy {
     display: block;
     padding: 1rem;
     background: var(--lsl-card);
-    border: 1px solid var(--lsl-border);
-    border-top: none;
-    border-radius: 0 0 var(--radius) var(--radius);
-    box-shadow: var(--shadow);
+    border-top: 1px solid var(--lsl-border);
   }
 }
 
