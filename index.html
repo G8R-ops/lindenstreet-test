@@ -40,10 +40,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
   </header>
-  <div id="top-success-message" class="hidden text-center bg-green-100 text-green-700 py-2">
-    ✅ Thank you! Your message has been sent.
-  </div>
-
   <!-- Hero -->
   <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
     <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full hero-video">
@@ -190,22 +186,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Contact -->
   <section id="contact" class="container mx-auto py-16 px-4 text-center">
     <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-    <form 
-      action="https://docs.google.com/forms/d/e/1FAIpQLSeY0xZw-JpdOGkBctQfC5vFPZHe6qxVD-8av5gD8fa3HfIKIA/formResponse" 
-      method="POST" 
-      target="hidden_iframe" 
-      onsubmit="formSubmitted(event)" 
-      class="max-w-lg mx-auto bg-white shadow p-6 rounded">
-      <input type="text" name="entry.295846301" placeholder="Your Name" class="w-full border p-2 mb-4 rounded" required>
-      <input type="email" name="entry.1167689731" placeholder="Your Email" class="w-full border p-2 mb-4 rounded" required>
-      <textarea name="entry.1033462780" placeholder="Your Message" class="w-full border p-2 mb-4 rounded" rows="4" required></textarea>
-      <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-700">Send</button>
-    </form>
-    <div id="success-message" class="hidden mt-4 text-green-600 font-semibold">
-      ✅ Thank you! Your message has been sent.
-    </div>
+    <div data-youform-embed data-form="mcdoeukb" data-width="100%" data-height="700"></div>
   </section>
+  <script src="https://app.youform.com/embed.js"></script>
 
   <!-- Footer -->
   <footer class="bg-gray-100 text-gray-800 text-center py-6">
